@@ -1,0 +1,154 @@
+
+fieldset {
+	display: block;
+	padding: 40px 0 30px;
+	border: none;
+	background: #eee;
+}
+
+.input input,
+input[type=text],
+input[type=password],
+textarea {
+	display: block;
+	margin: 0 0 5px;
+	padding: 0 5px;
+	max-width: 266px - 5px * 2;
+	max-height: 140px - 3px;
+	width: 266px - 5px * 2;
+	height: 32px;
+	border: 1px solid $bordergrey;
+	border-radius: 17px;
+	background: white;
+	color: $darkgrey;
+	font-size: 12px;
+	font-family: "Raleway";
+	line-height: 32px;
+
+	&.error {
+		background: $error;
+	}
+	&.valid {
+		background: $valid;
+	}
+
+	/*
+	+ label.error {
+		display: block!important;
+		margin: 10px 0 0 7px;
+		padding: 0;
+		width: 21px;
+		height: 17px;
+		background: url(../img/validation.png) no-repeat 0 0;
+		text-align: left;
+		text-indent: -9999px;
+	}
+	&.valid + label.error {
+		background-position: -21px 0;
+	}
+	*/
+}
+
+
+input[type=submit] {
+	-webkit-transition: opacity 0.2s ease-out;
+	   -moz-transition: opacity 0.2s ease-out;
+		 -o-transition: opacity 0.2s ease-out;
+			transition: opacity 0.2s ease-out;
+			&:hover { opacity: 0.7; }
+}
+
+textarea {
+	padding-top: 3px;
+	height: 140px - 3px;
+	line-height: 140%;
+	resize: none;
+}
+button {
+	overflow: visible;
+	outline: none;
+	border: none;
+	cursor: pointer;
+	*padding-top: 0!important;
+	*padding-bottom: 0!important;
+	*filter:chroma(color=#000000);
+
+	&:hover {
+		opacity: 0.8;
+	}
+}
+
+
+label {
+	display: block;
+	color: $darkgrey;
+}
+
+
+select {
+	cursor: pointer;
+}
+
+
+
+
+
+.left-labels {
+	margin: 0;
+
+	+ h4 {
+		padding-top: 20px;
+	}
+
+	label {
+		margin: 8px 5px 0 0;
+		padding-right: 10px;
+
+		text-align: right;
+		line-height: 120%;
+		p {
+			margin: 0;
+		}
+	}
+
+	.input, .textarea, .input, .select {
+		clear: both;
+
+		overflow: hidden;
+		margin: 0 0 10px;
+
+		label, input, textarea {
+			float: left;
+			clear: none;
+			margin: 0;
+			width: 200px - 10px * 2;
+			height: 29px;
+			line-height: 29px;
+		}
+		label {
+			width: 95px;
+			padding-right: 15px;
+			line-height: 31px;
+		}
+		input, textarea {
+			padding: 0 10px;
+			font-family: "OpenSansRegular";
+		}
+		textarea {
+			width: 260px - 10px * 2;
+			height: 100px - 5px;
+			padding-top: 5px;
+			line-height: 140%;
+			overflow: auto;
+		}
+	}
+
+
+	.select,
+	.textarea,
+	.input {
+		//margin: 0 0 3px;
+	}
+
+}
+

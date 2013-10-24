@@ -1,0 +1,405 @@
+/*                  ;+#+#@@@#+#@++#;;;:,,;;;.
+				  :++##@@++####+;++##++;;::;;;
+				 ++###+#####+#+;: :+####;    :;
+			   +++######+'':+###############  ;.
+			  +'####+' .::######:############: +
+			 ++##+;+##'; :+##++###'##########:; +
+		   '++###:'+'#'.##@@@#++'##;#########;+ ;
+		  +'++++#..;';#####@#++'';.:########+ +: :
+		 +';;@+++;:;.########''';:: #######+: +: ;
+		+:;;.#+@++ . #######:;;::: :.:::.++   ;: ;
+	   +..;:;+#++#+ '##############'::;''++ `. . ;
+	######'  ##+###.'#############;+:;''++.. ;   ;
+ .@@@#######;#+;++#::# ###########.++:':..   ..  :
+@@@@@#######+ +;++@;:;+;####+; :.+++`.... : ;: . .
+@@@@########++.':;;+; ;  ####+++:  ..... ;::  :;:              .-.
+@@@#########+++ +;.#;    . .. ......: . ;: .:;.:;             /  .\
+###########+++++++; #;  ... ..... :. : ;; ..;:; ;           .' .  .'.
+##########+###++++.+.+::.  . ... :  : ;; ..;;:; .        .-'. .    . .-._
+##################+ ..; ::: '  ..  ; ;;  ;;;.; ;       .' .L    . . . .  '.
+####################++.; ::::.'':.: :;: ;;:;:;        /. E    .    .   . ..\
+#####+++++###########++;..:;..::'.. ;: ;; ;;;        / .M . .     . .. . . .\
+###++;+''++.######### ++++.+++.:++:.. ;; :;.        |. O  .      .  . . ... .\
+#+++ ++++++++#########++: +.++++::++++: .; :       | . N     .       .  .  . .\
++.::;:+######+#########++:+ ++++++.::++++:         | . . .        .  . .  . ..|
+ ; ;;:+############@### +:++++++++'.:::+++::       |   .           .   . .  ..|
+ ;  :;.+##########@@@###+:+++++++++: .:::::::.     |. .   .        . ..   . ..|
+'   .:  +###############+++++++;+++:: .::::::.     |.  .          .     .   ..|
+	`.  `+#;############;'++++++++'::  ::::::.     | .  .          . . . . . .|
+		   #;##########++::++++++::::  .:::::      |. .G  .      .. .   .  ...|
+		   .#++########.+:::::::::::   :::::        \  R          .  . .  . ../
+			##++++###++'::::::::::::  :::::         \  .I .      .  .  . ... |
+			 ##:++++++ +::::::::::::  :::            \. .D   .   . .  .. . .'
+			 ### .+++++::::::::::::  ::               \  ..      .. .  .. /
+			  ####   .;:::'.:: :::: .:                 ':_ .  .  . ... _.'
+			  `##### +:::'.;:..:.:  :.                    '-.. . .  .-'
+			   ####:+:::':::: :::: : : 
+			   ###'.'::': ;:  : : . :.:
+
+	LEMONGRID v4 - created by Michael Cook 2013 - mykeself.com
+	@license: http://opensource.org/licenses/MIT
+
+	Lemongrid is a simple grid system for use on fixed width or fluid layouts.
+	You create segments that are fractions of it's parent's width, or fixed width - 
+	However, if it is a fluid layout site I recommend only using fractional widths.
+
+	Fractional width example:
+		<div class='grid'>
+			<div class='segment segment--1_2'>
+				<div>
+					1/2
+				</div>
+			</div>
+			<div class='segment segment--1_2'>
+				<div>
+					1/2
+				</div>
+			</div>
+		</div>
+
+	Fixed width example:
+		<div class='grid'>
+			<div>
+				<div class='segment segment--3'>3</div>
+				<div class='segment segment--3'>3</div>
+				<div class='segment segment--3'>3</div>
+			</div>
+		</div>
+
+	@todo: Prevent first and last segments from having gutter-left/right respectively,
+		   - unless they have the necessary edge gutters
+
+ lemonGrid Mixin:
+ @param $columns 			Number of main columns (int)
+ @param $segment-width 		Width of those columns (int)
+ @param $gutter-width 		Width of gutters in between (int)
+ @param $edge-gutter-left 	(Optional) Left edge gutter (boolean)
+ @param $edge-gutter-right 	(Optional) Right edge gutter (boolean)
+ @param $edge-gutter-size 	(Optional) edge gutter width as a multiple of gutter-width
+
+// _______________________________________________________________________________ */
+
+
+// .grid {   --  Presume lemonGrid is initialised withing .grid { }
+
+
+
+@function lemonGridOuterWidth($columns, $segment-width, $gutter-width, $edge-gutter-left: false, $edge-gutter-right: false, $edge-gutter-size: 1) {
+
+
+	$grid-outer-width: $columns * $segment-width + ($columns - 1) * $gutter-width;
+	
+	// Add edge gutters to outer width
+	@if $edge-gutter-left == true or $edge-gutter-right == true {
+		$grid-outer-width: $columns * $segment-width + ($columns - 1) * $gutter-width + $gutter-width * $edge-gutter-size;
+	}
+	@if $edge-gutter-left == true and $edge-gutter-right == true {
+		$grid-outer-width: $columns * $segment-width + ($columns - 1) * $gutter-width + $gutter-width * 2 * $edge-gutter-size;
+	}
+
+
+	@return $grid-outer-width;
+}
+
+
+@function lemonGridMainWidth($columns, $segment-width, $gutter-width) {
+	$grid-width: $columns * $segment-width + ($columns - 1) * $gutter-width;
+
+	@return $grid-width;
+}
+
+@mixin LemonGridGen($columns, $segment-width, $gutter-width) {
+
+
+	// ____ Variables ____ //
+
+
+	//$grid-main-width: $mainminwidth;
+	/*
+	$columns: 12;
+	$segment-width: 55px;
+	$gutter-width: 44px;
+	*/
+
+	
+	$grid-main-width: lemonGridMainWidth($columns, $segmentwidth, $gutterwidth);
+
+
+
+
+	overflow: hidden;
+	//clear: both; // nested grids don't need clearing
+
+	
+	// .segment.grids next to each other don't need left margins
+	//@if $edge-gutter-left == false {
+		 .grid + .grid.segment {
+			margin-left: 0;
+		}
+	//}
+
+	
+
+	&.grid--main {
+		width: $grid-main-width + px;
+		margin: 0 auto;
+		float: none;
+	}
+
+	// ___________________ //
+
+
+
+
+	.segment {
+		display: block;
+		float: left;
+		position: relative;
+		clear: none;
+		width: $segment-width + px;
+		*clear: right; // fix ie7 25% bug
+		margin-left: 0;
+
+		z-index: auto;
+
+		+ .segment {
+			margin-left: $gutter-width + px;
+		}
+
+		/*
+		// Add left edge gutter (optional parameter)
+		@if $edge-gutter-left == true {
+			margin-left: $gutter-width * $edge-gutter-size + px;
+		}
+		*/
+		
+
+		> div {
+			width: auto;
+			overflow: hidden;
+		}
+
+
+		/*
+		// ie7 fix
+		&.fifth + .fifth + .fifth + .fifth + .fifth {
+			*width: 19%;
+		}
+		&.fifth + .fourfifths {
+			*width: 79%;
+		}
+		&.fourfifths--more {
+			*width: 74%;
+		}
+		*/
+
+		/*
+		&.half + .half,
+		&.third + .twothirds,
+		&.twothirds + .third,
+		&.third + .third + .third,
+		&.quarter + .threequarters,
+		&.threequarters + .quarter,
+		&.fifth + .fourfifths,
+		&.fourfifths + .fifth {
+			float: right;
+			clear: right;
+		}
+		// bump up the main right content margin
+		&.threequarters.leftpad > div {
+			margin-left: 28px;
+		}
+		*/
+	}
+	a.segment {
+		cursor: pointer;
+	}
+
+
+	/*
+	// obsolete because it doesn't have internal edges now
+	// override edge gutters for grid--edgeless
+	&.grid--edgeless {
+
+		.segment {
+			margin-left: 0;
+
+			z-index: auto;
+
+			+ .segment {
+				margin-left: $gutter-width + px;
+			}
+		}
+	}
+	*/
+
+
+	// ____ Fractions ____ //
+
+	.segment--1_1	{ width:100%; }
+
+	.segment--1_2	{ width:50%; }
+
+	.segment--1_3	{ width:33.333%; }
+	.segment--2_3	{ width:66.666%; }
+
+	.segment--1_4	{ width:25%; }
+	.segment--3_4	{ width:75%; }
+
+	.segment--1_5	{ width:20%; }
+	.segment--2_5	{ width:40%; }
+	.segment--3_5	{ width:60%; }
+	.segment--4_5	{ width:80%; }
+
+	.segment--1_6	{ width:16.666%; }
+	.segment--5_6	{ width:83.333%; }
+
+	.segment--1_8	{ width:12.5%; }
+	.segment--3_8	{ width:37.5%; }
+	.segment--5_8	{ width:62.5%; }
+	.segment--7_8	{ width:87.5%; }
+
+	.segment--1_10	{ width:10%; }
+	.segment--3_10	{ width:30%; }
+	.segment--7_10	{ width:70%; }
+	.segment--9_10	{ width:90%; }
+
+	.segment--1_12	{ width:8.333%; }
+	.segment--5_12	{ width:41.666% }
+	.segment--7_12	{ width:58.333%; }
+	.segment--11_12	{ width:91.666%; }
+
+
+
+	.segment {
+	//&.grid--edgeless .segment + .segment {
+		&.segment--1_1,
+		&.segment--1_2,
+		&.segment--1_3,
+		&.segment--2_3,
+		&.segment--1_4,
+		&.segment--3_4,
+		&.segment--1_5,
+		&.segment--2_5,
+		&.segment--3_5,
+		&.segment--4_5,
+		&.segment--1_6,
+		&.segment--5_6,
+		&.segment--1_8,
+		&.segment--3_8,
+		&.segment--5_8,
+		&.segment--7_8,
+		&.segment--1_10,
+		&.segment--3_10,
+		&.segment--4_10,
+		&.segment--7_10,
+		&.segment--9_10,
+		&.segment--1_12,
+		&.segment--5_12,
+		&.segment--7_12,
+		&.segment--11_12 {
+			margin-left: 0;
+
+			// Trying to figure out scaling gutters for fractional segments
+			/*
+			//+ .segment {
+			margin-left: percentage($gutter-width / $grid-main-width / 2);
+			margin-right: percentage($gutter-width / $grid-main-width / 2);
+			
+			> div {
+			}
+			*/
+		}
+	}
+	// ___________________ //
+
+
+
+
+
+
+
+	// _____ Chunks ______ //
+
+	.segment {
+
+		@include segmentWidths($segment-width, $gutter-width);
+
+	}
+
+	// ___________________ //
+
+
+
+
+
+	// _____ Gutters _____ //
+
+	.segment {
+		&.gutter-right {
+			@include segmentWidths($segment-width, $gutter-width, $gutter-width);
+
+			+ .segment {
+				margin-left: 0;
+			}
+		}
+
+		&.gutter-left {
+			// shift left, then add right gutterworth as well
+			@include segmentWidths($segment-width, $gutter-width, $gutter-width);
+			margin-left: 0;
+		}
+
+		&.gutter-left.gutter-right {
+			@include segmentWidths($segment-width, $gutter-width, $gutter-width * 2);
+		}
+	}
+
+
+	// ___________________ //
+
+
+
+	// ____ Push/Pull / Offset ____ //
+	// Basically forcing margins before things
+	// Overrides guttering ?
+	// push would have to override right gutter
+	// pull would have twice as much right margin (left margin on proceeding)
+
+	// Only really useful for fluid sites - i.e. pushing a div to clear on a mobile site
+
+	// ___________________ //
+
+
+
+
+}
+
+
+@mixin segmentWidths($segment-width, $gutter-width, $gutter-right: 0) {
+	/*
+
+	@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+	only screen and (min--moz-device-pixel-ratio: 1.5),
+	only screen and (-o-device-pixel-ratio: 3/2), 
+	only screen and (min-device-pixel-ratio: 1.5) {
+		$x2 : $image + '@2x.' + $type;
+		background-image: url($x2)!important;
+		background-repeat: $repeat;
+	}
+	*/
+	&.segment--1 {	width: $segment-width *  1 +  0 * $gutter-width + $gutter-right + px; }
+	&.segment--1 {	width: $segment-width *  1 +  0 * $gutter-width + $gutter-right + px; }
+	&.segment--2 {	width: $segment-width *  2 +  1 * $gutter-width + $gutter-right + px; }
+	&.segment--3 {	width: $segment-width *  3 +  2 * $gutter-width + $gutter-right + px; }
+	&.segment--4 {	width: $segment-width *  4 +  3 * $gutter-width + $gutter-right + px; }
+	&.segment--5 {	width: $segment-width *  5 +  4 * $gutter-width + $gutter-right + px; }
+	&.segment--6 {	width: $segment-width *  6 +  5 * $gutter-width + $gutter-right + px; }
+	&.segment--7 {	width: $segment-width *  7 +  6 * $gutter-width + $gutter-right + px; }
+	&.segment--8 {	width: $segment-width *  8 +  7 * $gutter-width + $gutter-right + px; }
+	&.segment--9 {	width: $segment-width *  9 +  8 * $gutter-width + $gutter-right + px; }
+	&.segment--10 {	width: $segment-width * 10 +  9 * $gutter-width + $gutter-right + px; }
+	&.segment--11 {	width: $segment-width * 11 + 10 * $gutter-width + $gutter-right + px; }
+	&.segment--12 {	width: $segment-width * 12 + 11 * $gutter-width + $gutter-right + px; }
+}
+

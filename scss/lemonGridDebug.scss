@@ -1,0 +1,61 @@
+
+	// Debugging
+	body.debug {
+		&.debug--citrus {
+			background: #F0FFCA!important;
+
+			.grid-outer {
+				background: #bae38c;
+			}
+			.grid {
+				background: #9AD856!important;
+			}
+			.segment {
+				//text-align: center;
+				background: #FFF473;
+				+ .segment {
+					background: #ef8930;
+					+ .segment {
+						background: #FFF473;
+						+ .segment {
+							background: #ef8930;
+							+ .segment {
+								background: #FFF473;
+								+ .segment {
+									background: #ef8930;
+									+ .segment {
+										background: #FFF473;
+										+ .segment {
+											background: #ef8930;
+											+ .segment {
+												background: #FFF473;
+												+ .segment {
+													background: #ef8930;
+													+ .segment {
+														background: #FFF473;
+														+ .segment {
+															background: #ef8930;
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		
+		}
+		&.debug--gaps .segment {
+			margin-bottom: 20px;
+		}
+		&.debug--text-center {
+			text-align: center;
+		}
+		.grid--no-debug-gaps .segment {
+			margin-bottom: 0;
+		}
+	}
