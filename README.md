@@ -1,5 +1,6 @@
-lemongrid
+# lemongrid
 =========
+```
 
   	              ;+#+#@@@#+#@++#;;;:,,;;;.
 				  :++##@@++####+;++##++;;::;;;
@@ -38,15 +39,19 @@ lemongrid
 			  `##### +:::'.;:..:.:  :.                    '-.. . .  .-'
 			   ####:+:::':::: :::: : : 
 			   ###'.'::': ;:  : : . :.:
+```
 
-	LEMONGRID v4 - created by Michael Cook 2013 - mykeself.com
+	### LEMONGRID v4 - created by Michael Cook 2013 - mykeself.com
+	==============================================================
+
 	@license: http://opensource.org/licenses/MIT
 
 	Lemongrid is a simple grid system for use on fixed width or fluid layouts.
 	You create segments that are fractions of it's parent's width, or fixed width - 
 	However, if it is a fluid layout site I recommend only using fractional widths.
 
-	Fractional width example:
+	#### Fractional width example:
+	```
 		<div class='grid'>
 			<div class='segment segment--1_2'>
 				<div>
@@ -59,8 +64,10 @@ lemongrid
 				</div>
 			</div>
 		</div>
-
-	Fixed width example:
+	```
+	
+	#### Fixed width example:
+	```
 		<div class='grid'>
 			<div>
 				<div class='segment segment--3'>3</div>
@@ -68,6 +75,7 @@ lemongrid
 				<div class='segment segment--3'>3</div>
 			</div>
 		</div>
+	```
 
 	@todo: Prevent first and last segments from having gutter-left/right respectively,
 		   - unless they have the necessary edge gutters
