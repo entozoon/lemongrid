@@ -1,7 +1,8 @@
-lemongrid
+LEMONGRID
 ---
 
 <pre>
+
   	              ;+#+#@@@#+#@++#;;;:,,;;;.
 				  :++##@@++####+;++##++;;::;;;
 				 ++###+#####+#+;: :+####;    :;
@@ -39,46 +40,67 @@ lemongrid
 			  .##### +:::'.;:..:.:  :.                    '-.. . .  .-'
 			   ####:+:::':::: :::: : : 
 			   ###'.'::': ;:  : : . :.:
+
 </pre>
 
 
-	# LEMONGRID v4 - created by Michael Cook 2013 - mykeself.com
+# LEMONGRID v4 - created by Michael Cook 2013 - http://mykeself.com
 
-	@license: http://opensource.org/licenses/MIT
+@license: http://opensource.org/licenses/MIT
 
-	Lemongrid is a simple grid system for use on fixed width or fluid layouts.
-	You create segments that are fractions of it's parent's width, or fixed width - 
-	However, if it is a fluid layout site I recommend only using fractional widths.
+Lemongrid is a simple grid system for use on fixed width or fluid layouts.
+You create segments that are fractions of it's parent's width, or fixed width - 
+However, if it is a fluid layout site I recommend only using fractional widths.
+(This system requires Sass).
 
-	#### Fractional width example:
-	```
-		<div class='grid'>
-			<div class='segment segment--1_2'>
-				<div>
-					1/2
-				</div>
-			</div>
-			<div class='segment segment--1_2'>
-				<div>
-					1/2
-				</div>
-			</div>
-		</div>
-	```
-	
-	#### Fixed width example:
-	```
-		<div class='grid'>
+#### Sass Initialisation example:
+```
+$columns: 12;
+$gutterwidth: 20;
+$segmentwidth: 60;
+
+$grid-outer-width: lemonGridOuterWidth($columns, $segmentwidth, $gutterwidth, true, true);
+
+.grid-outer {
+	position: relative;
+	overflow: hidden;
+	margin: 0 auto;
+	width: $grid-outer-width + px;
+}
+.grid {
+	@include LemonGridGen($columns, $segmentwidth, $gutterwidth);
+}
+```
+
+#### Fractional width example:
+```
+	<div class='grid'>
+		<div class='segment segment--1_2'>
 			<div>
-				<div class='segment segment--3'>3</div>
-				<div class='segment segment--3'>3</div>
-				<div class='segment segment--3'>3</div>
+				1/2
 			</div>
 		</div>
-	```
+		<div class='segment segment--1_2'>
+			<div>
+				1/2
+			</div>
+		</div>
+	</div>
+```
 
-	@todo: Prevent first and last segments from having gutter-left/right respectively,
-		   - unless they have the necessary edge gutters
+#### Fixed width example:
+```
+	<div class='grid'>
+		<div>
+			<div class='segment segment--3'>3</div>
+			<div class='segment segment--3'>3</div>
+			<div class='segment segment--3'>3</div>
+		</div>
+	</div>
+```
+
+@todo: Prevent first and last segments from having gutter-left/right respectively,
+	   - unless they have the necessary edge gutters
 
  lemonGrid Mixin:
  @param $columns 			Number of main columns (int)
