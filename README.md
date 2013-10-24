@@ -1,4 +1,4 @@
-# lemongrid
+lemongrid
 ---
 
 <pre>
@@ -42,8 +42,7 @@
 </pre>
 
 
-	### LEMONGRID v4 - created by Michael Cook 2013 - mykeself.com
-	---
+	# LEMONGRID v4 - created by Michael Cook 2013 - mykeself.com
 
 	@license: http://opensource.org/licenses/MIT
 
