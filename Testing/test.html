@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>html,body{margin:0;padding:0;}
+
+
+
+section {
+	display: block;
+	float: left;
+	width: 33.3%;
+
+	padding: 0 10px 0; /* middle sections */
+	box-sizing: border-box; *behavior: url(boxsizing.htc); /*ie7*/
+}
+section:first-child {
+	padding: 0 20px 0 0; /* first section */
+}
+
+/* last section (keep seperate for ie8's sake) */
+section + section.last-child {
+	padding: 0 0 0 20px;
+}
+section + section:last-child {
+	padding: 0 0 0 20px;
+}
+
+
+section + section.last-child * {
+	background: #f58031!important;
+}
+section + section:last-child * {
+	background: #f58031!important;
+}
+
+
+</style>
+
+
+<script type='text/javascript'>
+	// allow browsers to use segment elements (must be in <head>)
+	document.createElement('segment');
+
+
+	// allow old browsers to use section elements (must be in <head>)
+	document.createElement('section');
+</script>
+
+
+
+</head>
+
+<body>
+	
+	<div>&nbsp;</div>
+
+	<div style='width: 70%; margin: 0 auto;background: #afa'>
+
+		Use sections rather than segments (seo)
+
+		<div style='background: #eee;'>
+			<section class='section--1_3'><div style='background:red'>Yes</div></section>
+			<section class='section--1_3'><div style='background:red'>Yes</div></section>
+			<section class='section--1_3'><div style='background:red'>Yes</div></section>
+		</div>
+
+
+		<div>&nbsp;</div>
+
+		<div style='background: #eee; overflow: visible;'>
+			<div style='width: 33.3%;float:left;background: #ccf'>
+				<div style='padding: 0 20px 0 0;'>
+					<div style='background: #aaf'><br />33<br /></div>
+				</div>
+			</div>
+			<div style='width: 33.3%;float:left;background: #ccf'>
+				<div style='padding: 0 10px;'>
+					<div style='background: #aaf'><br />33<br /></div>
+				</div>
+			</div>
+			<div style='width: 33.3%;float:left;background: #ccf'>
+				<div style='padding: 0 0 0 20px'>
+					<div style='background: #aaf'><br />33<br /></div>
+				</div>
+			</div>
+		</div>
+
+		<div>&nbsp;</div>
+
+		<div style='background: #eee; overflow: visible;'>
+			General
+		</div>
+
+		<div>&nbsp;</div>
+
+		<div style='width: 100%;padding: 0 40px; margin: 0 0 0 -40px;background: #eee; overflow: visible;'>
+			This would need to stretch out beyond the padding..
+			<div>&nbsp;</div>
+
+			<div style='width: 33.3%;float:left;background: #ccf'>
+				<div style='padding: 0 20px;'>
+					<div style='background: #aaf'><br />33<br /></div>
+				</div>
+			</div>
+
+			<div style='width: 33.3%;float:left;background: #ccf'>
+				<div style='padding: 0 20px;'>
+					<div style='background: #aaf'><br />33<br /></div>
+				</div>
+			</div>
+
+			<div style='width: 33.3%;float:left;background: #ccf'>
+				<div style='padding: 0 20px;'>
+					<div style='background: #aaf'><br />33<br /></div>
+				</div>
+			</div>
+
+			<div>&nbsp;</div>
+
+			<div style='width: 50%;float:left;background: #ccf'>
+				<div style='padding: 0 20px;'>
+					<div style='background: #aaf'><br />50<br /></div>
+				</div>
+			</div>
+
+			<div style='width: 50%;float:left;background: #ccf'>
+				<div style='padding: 0 20px;'>
+					<div style='background: #aaf'><br />50<br /></div>
+				</div>
+			</div>
+
+			<div>&nbsp;</div>
+
+			<div style='width: 25%;float:left;background: #ccf'>
+				<div style='padding: 0 20px;'>
+					<div style='background: #aaf'><br />25<br /></div>
+				</div>
+			</div>
+			<div style='width: 25%;float:left;background: #ccf'>
+				<div style='padding: 0 20px;'>
+					<div style='background: #aaf'><br />25<br /></div>
+				</div>
+			</div>
+			<div style='width: 25%;float:left;background: #ccf'>
+				<div style='padding: 0 20px;'>
+					<div style='background: #aaf'><br />25<br /></div>
+				</div>
+			</div>
+			<div style='width: 25%;float:left;background: #ccf'>
+				<div style='padding: 0 20px;'>
+					<div style='background: #aaf'><br />25<br /></div>
+				</div>
+			</div>
+
+			<div>&nbsp;</div>
+
+			<div style='clear: both;width:100%;height:1px;'>&nbsp;</div>
+		</div>
+
+		<div>&nbsp;</div>
+	</div>
+
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+<script type='text/javascript'>
+	//alert(navigator.userAgent.toLowerCase());
+	if (/msie [1-8]{1}[^0-9]/.test(navigator.userAgent.toLowerCase())) {
+    	$('segment:last-child').addClass('last-child');
+
+    	$('section:last-child').addClass('last-child');
+    }
+</script>
+
+</body>
+</html>
