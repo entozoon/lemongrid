@@ -1,0 +1,61 @@
+/*
+Syntax error: Invalid CSS after "*/": expected "}", was ""
+        on line 359 of lemonGrid.scss
+        from line 3 of lemonGridCompilation.scss
+
+354: 	&.segment--10 {	width: $segment-width * 10 +  9 * $gutter-width + $gutter-right + px; }
+355: 	&.segment--11 {	width: $segment-width * 11 + 10 * $gutter-width + $gutter-right + px; }
+356: 	&.segment--12 {	width: $segment-width * 12 + 11 * $gutter-width + $gutter-right + px; }
+357: }
+358: 
+359: */
+
+Backtrace:
+lemonGrid.scss:359
+lemonGridCompilation.scss:3
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/scss/parser.rb:1136:in `expected'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/scss/parser.rb:1072:in `expected'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/scss/parser.rb:1067:in `tok!'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/scss/parser.rb:524:in `block'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/scss/parser.rb:175:in `mixin_directive'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/scss/parser.rb:163:in `special_directive'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/scss/parser.rb:135:in `directive'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/scss/parser.rb:541:in `block_child'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/scss/parser.rb:531:in `block_contents'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/scss/parser.rb:70:in `stylesheet'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/scss/parser.rb:27:in `parse'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/engine.rb:342:in `_to_tree'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/engine.rb:274:in `to_tree'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/tree/visitors/perform.rb:223:in `visit_import'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/tree/visitors/base.rb:37:in `visit'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/tree/visitors/perform.rb:98:in `visit'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/tree/visitors/base.rb:53:in `map'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/tree/visitors/perform.rb:107:in `block in visit_children'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/tree/visitors/perform.rb:119:in `with_environment'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/tree/visitors/perform.rb:106:in `visit_children'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/tree/visitors/perform.rb:126:in `visit_root'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/tree/visitors/base.rb:37:in `visit'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/tree/visitors/perform.rb:98:in `visit'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/tree/visitors/perform.rb:7:in `visit'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/tree/root_node.rb:20:in `render'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/engine.rb:315:in `_render'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/engine.rb:262:in `render'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/plugin/compiler.rb:341:in `update_stylesheet'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/plugin/compiler.rb:203:in `block in update_stylesheets'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/plugin/compiler.rb:201:in `each'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/plugin/compiler.rb:201:in `update_stylesheets'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/lib/sass/plugin/compiler.rb:299:in `block in watch'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/vendor/listen/lib/listen/multi_listener.rb:86:in `call'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/vendor/listen/lib/listen/multi_listener.rb:86:in `on_change'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/vendor/listen/lib/listen/multi_listener.rb:95:in `block in initialize_adapter'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/vendor/listen/lib/listen/adapters/polling.rb:55:in `call'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/vendor/listen/lib/listen/adapters/polling.rb:55:in `poll'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/sass-3.2.5/vendor/listen/lib/listen/adapters/polling.rb:31:in `block in start'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Invalid CSS after \"*/\": expected \"}\", was \"\"\A         on line 359 of lemonGrid.scss\A         from line 3 of lemonGridCompilation.scss\A \A 354: 	&.segment--10 {	width: $segment-width * 10 +  9 * $gutter-width + $gutter-right + px; }\A 355: 	&.segment--11 {	width: $segment-width * 11 + 10 * $gutter-width + $gutter-right + px; }\A 356: 	&.segment--12 {	width: $segment-width * 12 + 11 * $gutter-width + $gutter-right + px; }\A 357: }\A 358: \A 359: */"; }

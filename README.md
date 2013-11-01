@@ -44,13 +44,12 @@ LEMONGRID
 </pre>
 
 
-# LEMONGRID v4 - created by Michael Cook 2013 - http://mykeself.com
+# LEMONGRID - created by Michael Cook 2013 - http://mykeself.com
 
 @license: http://opensource.org/licenses/MIT
 
 Lemongrid is a simple grid system for use on fixed width or fluid layouts.
-You create segments that are fractions of it's parent's width, or fixed width - 
-However, if it is a fluid layout site I recommend only using fractional widths.
+Supports all modern browsers, and ie7 onwards (with some minor javascript)
 (This system requires Sass).
 
 #### Sass Initialisation example:
