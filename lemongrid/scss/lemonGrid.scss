@@ -213,10 +213,16 @@ section {
 	display: block;
 	float: left;
 	clear: none;
-	box-sizing: border-box;
+	box-sizing: border-box; *behavior: url(lemongrid/boxsizing.htc); //ie7
 
 	padding: 0 $gutter-width / 2 + px;
-	width: 100%; *behavior: url(boxsizing.htc); //ie7
+	width: 100%;
+
+	&.clear {
+		width: 100%;
+		padding: 0;
+		clear: both;
+	}
 }
 
 
