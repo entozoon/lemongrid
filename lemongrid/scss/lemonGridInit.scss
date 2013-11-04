@@ -1,4 +1,31 @@
 
+
+$columns: 4;
+$gutter-width: 20;
+$segment-width: 150;
+
+
+.content {
+	overflow: hidden;
+	margin: 0 auto;
+	padding: 0 $gutter-width / 2 + px;
+	width: contentWidth($columns, $segment-width, $gutter-width) + px;
+
+	> div {
+		background: #a9a;
+	}
+}
+
+.lemongrid {
+	@include LemonGridGen($columns, $segment-width, $gutter-width);
+	width: lemonGridWidth($columns, $segment-width, $gutter-width) + px;
+}
+
+.lemongrid--fluid {
+	width: 80%;
+}
+
+/*
 $columns: 4;
 $gutterwidth: 20;
 $segmentwidth: 280;
@@ -10,8 +37,10 @@ $grid-outer-width: lemonGridOuterWidth($columns, $segmentwidth, $gutterwidth, tr
 $minwidth: 1024 - $gutterwidth;
 
 $headerheight: 135px;
+*/
 
 .grid-outer {
+	/*
 	position: relative;
 	overflow: hidden;
 	margin: 0 auto;
@@ -25,6 +54,9 @@ $headerheight: 135px;
 	max-width: $grid-outer-width + px;
 
 	width: 100%;
+
+
+	*/
 
 	/*
 	> .grid {
@@ -53,54 +85,17 @@ $headerheight: 135px;
 
 html, body, #wrapper {
 	position: relative;
+	overflow: hidden;
 
 	margin: 0; 
 	padding: 0;
-	//min-width: $grid-outer-width + px;
-	min-width: $minwidth + px;
-	min-height: 100%;
 	width: 100%;
 	height: auto;
-	overflow: hidden;
+	//min-width: $grid-outer-width + px;
+	min-height: 100%;
 }
 html {
 	overflow: auto;
 	height: 100%;
 }
-#wrapper {
-	> div {
-		//padding-bottom: $footerheight;
 
-		> .grid {
-			//margin-top: $headerheight;
-		}
-	}
-}
-#header,
-#header .grid-outer {
-	height: $headerheight;
-}
-
-.content {
-	position: relative;
-	z-index: 0;
-	clear: both;
-	padding: 0 0 25px;
-}
-
-.clear.gutter {
-	height: $gutterwidth + px;
-}
-
-#footer {
-	padding: 25px 0;
-	margin: 25px 0 0 0;
-	/*
-	position: absolute;
-	bottom: 0;
-	width: $grid-outer-width  + px;
-	> div {
-		height: $footerheight - 20px;
-	}
-	*/
-}
