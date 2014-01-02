@@ -1,8 +1,4 @@
-LEMONGRID
----
-
-<pre>
-╔══════╤═╤═════╤═╤═▒▓▓█████▓██▓▓█▓▓▓▒▒▒▓▓▓▒════╤═╤═════╤═╤═════╤═╤═════╤═╤═════╤╗
+/*═════╤═╤═════╤═╤═▒▓▓█████▓██▓▓█▓▓▓▒▒▒▓▓▓▒════╤═╤═════╤═╤═════╤═╤═════╤═╤═════╤╗
 ╟┘ ┌─┐ └─┘ ┌─┐ └─┘▒▓▓████▓▓████▓▓▓▓██▓▓▓▓▒▒▓▓▓ └─┘ ╔═╗ └╔══╗╔═╗╔═╗ ┌╔═╗└─╔╗┌─╔╗└╢
 ╟┐ └─┘ ┌─┐ └─┘ ┌─▓▓███▓█████▓█▓▓▒▒▒▓████▓▒▒▒▒▒▓┌─┐ ║ ║ ┌║╔═╝║ ╚╝ ║ ╔╝ ╚╗─║╚╗─║║┌╢
 ╟┘ ┌─┐ └─┘ ┌─┐ ▒▓▓██████▓▒▒▒▓███████████████▒▒▓▒─┘ ║ ║ └║╚═╗║╔╗╔╗║╔╝╔╩╗╚╗║ ╚═╝║└╢
@@ -50,49 +46,7 @@ LEMONGRID
 ▓  .REQUIRES boxsizing.htc in the same folder as your main page files  .   .   .▓
 ▓   http:/github.com/Schepp/box-sizing-polyfill/blob/master/boxsizing.htc   .   ▓
 ▒.   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .  ▒
-▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
-</pre>
-
-
-#### Sass Initialisation example:
-```
-@import 'lemonGrid';
-$columns: 12;
-$gutter-width: 10;
-$segment-width: 68;
-$outer-gutters: 3;
-
-
-.lemongrid {
-	@include LemonGridGen($columns, $segment-width, $gutter-width, $outer-gutters);
-	width: lemonGridWidth($columns, $segment-width, $gutter-width, $outer-gutters) + px;
-
-	&.main {
-		position: relative;
-		overflow: hidden;
-		margin: 0 auto;
-		padding: 0;
-		//width: contentWidth($columns, $segment-width, $gutter-width) + px;
-	}
-
-
-	&.lemongrid--fluid {
-		width: 100%;
-		// Typical maximum width options:
-		//max-width: lemonGridWidth($columns, $segment-width, $gutter-width) + px;
-		max-width: 1024px - $gutter-width * 2;
-
-		// nested fluid lemongrids have no padding atall
-		.lemongrid--fluid section {
-			padding: 0;
-		}
-	}
-}
-```
-
-
-#### TYPICAL HTML EXAMPLES (see lemongridExample.html for more):
-```
+▒▒▒▒▒▒▒▒▒▒ TYPICAL HTML EXAMPLES (see lemongridExample.html for more): ▒▒▒▒▒▒▒▒▒▒
 <div class='lemongrid main'>
 	<style>
 		.testdiv { background: blue; width: auto; text-align: center; }
@@ -136,13 +90,304 @@ $outer-gutters: 3;
 		</section>
 	</section>
 </div>
-```
 
 
-#### Fluid / Liquid layouts, simply add the lemongrid--fluid class
-```
-<div class='lemongrid lemongrid--fluid main'>
-	<section>
-		<section class='section--1_1'><div class='testdiv'>1_1</div></section>
-	</section>
-</div>
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒  CODE: ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒*/
+/*
+@function mainLemonGridPadding($gutter-width, $outer-gutters: 1) {
+	@return $gutter-width * $outer-gutters;
+}
+@function innerLemonGridWidth($columns, $segment-width, $gutter-width) {
+	$grid-width: $columns * $segment-width + ($columns - 1) * $gutter-width;
+
+	@return $grid-width;
+}
+*/
+
+@function lemonGridWidth($columns, $segment-width, $gutter-width, $outer-gutters: 1) {
+	//$outer-gutters: $outer-gutters - 1;
+	$outer-width: $columns * $segment-width + ($columns - 1 + $outer-gutters * 2) * $gutter-width;
+
+	@return $outer-width;
+}
+
+
+@mixin LemonGridGen($columns, $segment-width, $gutter-width, $outer-gutters: 1) {
+
+
+	//$grid-width: contentWidth($columns, $segment-width, $gutter-width);
+	//$outer-width: lemonGridOuterWidth($columns, $segment-width, $gutter-width);
+
+
+	@include segmentWidths($segment-width, $gutter-width);
+
+
+	padding: 0;
+	overflow: hidden;
+
+
+
+
+	/*> div {
+		overflow: hidden;
+	}*/
+	
+	/* // Setting clear in a very general way
+	.clear {
+		width: 100%;
+		clear: both;
+		padding: 0;
+	}
+
+	section {
+		padding: 0 $gutter-width + px!important
+	}*/
+
+	/*
+	// Setting clear in a more specific way
+	// .clear would have no padding, but .section--1_2.clear would
+	section.clear {
+		width: 100%;
+		clear: both;
+		padding: 0;
+	}
+
+	section {
+		padding: 0 $gutter-width + px;
+	}
+	/// override .clear class
+	//section.clear {
+	section {
+		&.section--1_1,&.section--2_2,&.section--3_3,&.section--4_4,&.section--5_5,&.section--6_6,&.section--7_7,&.section--8_8,&.section--9_9,&.section--10_10,&.section--11_11,&.section--12_12,&.section--1_2,&.section--2_4,&.section--3_6,&.section--4_8,&.section--5_10,&.section--6_12,&.section--1_3,&.section--2_6,&.section--3_9,&.section--4_12,&.section--1_4,&.section--2_8,&.section--3_12,&.section--1_5,&.section--2_10,&.section--1_6,&.section--2_12,&.section--1_7,&.section--1_8,&.section--1_9,&.section--1_10,&.section--1_11,&.section--1_12,&.section--2_3,&.section--4_6,&.section--6_9,&.section--8_12,&.section--2_5,&.section--4_10,&.section--2_7,&.section--2_9,&.section--2_11,&.section--3_4,&.section--6_8,&.section--9_12,&.section--3_5,&.section--6_10,&.section--3_7,&.section--3_8,&.section--3_10,&.section--3_11,&.section--4_5,&.section--8_10,&.section--4_7,&.section--4_9,&.section--4_11,&.section--5_6,&.section--10_12,&.section--5_7,&.section--5_8,&.section--5_9,&.section--5_11,&.section--5_12,&.section--6_7,&.section--6_11,&.section--7_8,&.section--7_9,&.section--7_10,&.section--7_11,&.section--7_12,&.section--8_9,&.section--8_11,&.section--9_10,&.section--9_11,&.section--10_11,&.section--11_12 {
+			//padding: 0 $gutter-width / 2 + px;
+			padding: 0 $gutter-width + px;
+		}
+	}
+	*/
+
+	// By default, consider <section> to be clearing outer section--1_1
+	section {
+	//section.section--1_1 {
+		clear: both;
+		//padding: 0;
+		// $outer-gutters - 1 because section--1_1 has padding already
+		padding: 0 $gutter-width * ($outer-gutters - 1) + px;
+	}
+
+	.section--1_1,.section--2_2,.section--3_3,.section--4_4,.section--5_5,.section--6_6,.section--7_7,.section--8_8,.section--9_9,.section--10_10,.section--11_11,.section--12_12,.section--1_2,.section--2_4,.section--3_6,.section--4_8,.section--5_10,.section--6_12,.section--1_3,.section--2_6,.section--3_9,.section--4_12,.section--1_4,.section--2_8,.section--3_12,.section--1_5,.section--2_10,.section--1_6,.section--2_12,.section--1_7,.section--1_8,.section--1_9,.section--1_10,.section--1_11,.section--1_12,.section--2_3,.section--4_6,.section--6_9,.section--8_12,.section--2_5,.section--4_10,.section--2_7,.section--2_9,.section--2_11,.section--3_4,.section--6_8,.section--9_12,.section--3_5,.section--6_10,.section--3_7,.section--3_8,.section--3_10,.section--3_11,.section--4_5,.section--8_10,.section--4_7,.section--4_9,.section--4_11,.section--5_6,.section--10_12,.section--5_7,.section--5_8,.section--5_9,.section--5_11,.section--5_12,.section--6_7,.section--6_11,.section--7_8,.section--7_9,.section--7_10,.section--7_11,.section--7_12,.section--8_9,.section--8_11,.section--9_10,.section--9_11,.section--10_11,.section--11_12 {
+		clear: none;
+		padding: 0 $gutter-width + px;
+	}
+
+
+
+
+
+	section {
+		display: block;
+		float: left;
+		clear: none;
+		-webkit-box-sizing: border-box;
+		   -moz-box-sizing: border-box;
+				box-sizing: border-box; *behavior: url(boxsizing.htc); //ie7,8
+
+
+		width: 100%;
+
+		// already has half, so 1.5
+		&.double-gutter--right {
+			//padding-right: $gutter-width * 1.5 + px;
+			padding-right: $gutter-width * 2 + px;
+		}
+		&.double-gutter--left {
+			padding-left: $gutter-width * 2 + px;
+		}
+		&.double-gutters {
+			@extend .double-gutter--left;
+			@extend .double-gutter--right;
+		}
+
+		&.gutterless--left { padding-left: 0; }
+		&.gutterless--right { padding-right: 0; }
+		&.gutterless {
+			@extend .gutterless--left;
+			@extend .gutterless--right;
+		}
+
+		/*
+		&.full {
+			padding-left: 0;
+			padding-right: 0;
+		}
+		// Force section break
+		&.section--break {
+			overflow: hidden;
+			float: none;
+			padding-left: 0;
+			padding-right: 0;
+		}
+		*/
+		
+		
+
+		// Full sections have full gutters (but aren't used to contain other sections!)
+		// section wrappers should have class 'clear'. (half padded)
+		/*
+		&.section--1_1 {
+			clear: both;
+			padding: 0 $gutter-width + px;
+		}
+		*/
+
+		&.section--center {
+			float: none;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		/* Generated (don't edit) */
+		&.section--1_1,
+		&.section--2_2,
+		&.section--3_3,
+		&.section--4_4,
+		&.section--5_5,
+		&.section--6_6,
+		&.section--7_7,
+		&.section--8_8,
+		&.section--9_9,
+		&.section--10_10,
+		&.section--11_11,
+		&.section--12_12
+		{ width: 100% }
+		&.section--1_2,
+		&.section--2_4,
+		&.section--3_6,
+		&.section--4_8,
+		&.section--5_10,
+		&.section--6_12
+		{ width: 50% }
+		&.section--1_3,
+		&.section--2_6,
+		&.section--3_9,
+		&.section--4_12
+		{ width: 33.333% }
+		&.section--1_4,
+		&.section--2_8,
+		&.section--3_12
+		{ width: 25% }
+		&.section--1_5,
+		&.section--2_10
+		{ width: 20% }
+		&.section--1_6,
+		&.section--2_12
+		{ width: 16.666% }
+		&.section--1_7
+		{ width: 14.285% }
+		&.section--1_8
+		{ width: 12.5% }
+		&.section--1_9
+		{ width: 11.111% }
+		&.section--1_10
+		{ width: 10% }
+		&.section--1_11
+		{ width: 9.09% }
+		&.section--1_12
+		{ width: 8.333% }
+		&.section--2_3,
+		&.section--4_6,
+		&.section--6_9,
+		&.section--8_12
+		{ width: 66.666% }
+		&.section--2_5,
+		&.section--4_10
+		{ width: 40% }
+		&.section--2_7
+		{ width: 28.571% }
+		&.section--2_9
+		{ width: 22.222% }
+		&.section--2_11
+		{ width: 18.181% }
+		&.section--3_4,
+		&.section--6_8,
+		&.section--9_12
+		{ width: 75% }
+		&.section--3_5,
+		&.section--6_10
+		{ width: 60% }
+		&.section--3_7
+		{ width: 42.857% }
+		&.section--3_8
+		{ width: 37.5% }
+		&.section--3_10
+		{ width: 30% }
+		&.section--3_11
+		{ width: 27.272% }
+		&.section--4_5,
+		&.section--8_10
+		{ width: 80% }
+		&.section--4_7
+		{ width: 57.142% }
+		&.section--4_9
+		{ width: 44.444% }
+		&.section--4_11
+		{ width: 36.363% }
+		&.section--5_6,
+		&.section--10_12
+		{ width: 83.333% }
+		&.section--5_7
+		{ width: 71.428% }
+		&.section--5_8
+		{ width: 62.5% }
+		&.section--5_9
+		{ width: 55.555% }
+		&.section--5_11
+		{ width: 45.454% }
+		&.section--5_12
+		{ width: 41.666% }
+		&.section--6_7
+		{ width: 85.714% }
+		&.section--6_11
+		{ width: 54.545% }
+		&.section--7_8
+		{ width: 87.5% }
+		&.section--7_9
+		{ width: 77.777% }
+		&.section--7_10
+		{ width: 70% }
+		&.section--7_11
+		{ width: 63.636% }
+		&.section--7_12
+		{ width: 58.333% }
+		&.section--8_9
+		{ width: 88.888% }
+		&.section--8_11
+		{ width: 72.727% }
+		&.section--9_10
+		{ width: 90% }
+		&.section--9_11
+		{ width: 81.818% }
+		&.section--10_11
+		{ width: 90.909% }
+		&.section--11_12
+		{ width: 91.666% }
+
+	}
+}
+
+
+@mixin segmentWidths($segment-width, $gutter-width, $gutter-right: 0) {
+	
+	.section--1 {	width: $segment-width *  1 +  1 * $gutter-width + $gutter-right + px; }
+	.section--2 {	width: $segment-width *  2 +  2 * $gutter-width + $gutter-right + px; }
+	.section--3 {	width: $segment-width *  3 +  3 * $gutter-width + $gutter-right + px; }
+	.section--4 {	width: $segment-width *  4 +  4 * $gutter-width + $gutter-right + px; }
+	.section--5 {	width: $segment-width *  5 +  5 * $gutter-width + $gutter-right + px; }
+	.section--6 {	width: $segment-width *  6 +  6 * $gutter-width + $gutter-right + px; }
+	.section--7 {	width: $segment-width *  7 +  7 * $gutter-width + $gutter-right + px; }
+	.section--8 {	width: $segment-width *  8 +  8 * $gutter-width + $gutter-right + px; }
+	.section--9 {	width: $segment-width *  9 +  9 * $gutter-width + $gutter-right + px; }
+	.section--10 {	width: $segment-width * 10 +  10 * $gutter-width + $gutter-right + px; }
+	.section--11 {	width: $segment-width * 11 + 11 * $gutter-width + $gutter-right + px; }
+	.section--12 {	width: $segment-width * 12 + 12 * $gutter-width + $gutter-right + px; }
+	
+}

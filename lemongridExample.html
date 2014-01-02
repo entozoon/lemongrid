@@ -2,207 +2,101 @@
 <html>
 <head>
 
-	<link media='all' rel='stylesheet' type='text/css' href='lemongrid/lemongrid.css' />
+	<link media='all' rel='stylesheet' type='text/css' href='css/lemongrid.css' />
+	<!--[if lte IE 8]>
+		<script type='text/javascript'>
+			// allow old browsers to use section elements (must be in <head>)
+			document.createElement('section');
+		</script>
+	<![endif]-->
 
-	<script type='text/javascript'>
-		// allow old browsers to use section elements (must be in <head>)
-		document.createElement('section');
-	</script>
-
+	<style>
+		body { background: #f0ffca; font-family: tahoma; }
+		.header { background: #f4af71; padding-top: 20px;padding-bottom:20px; }
+		.header section { background: #f4cd71; }
+		.content { background: #cff4ae; }
+		.content .main { background: #9ad856; padding-top: 20px;padding-bottom:20px;  }
+		.testsection section { background: #bae38c; }
+		.testdiv { background: #fff473; width: auto; text-align: center; }
+		section section section .testdiv { background: #ef8930; }
+	</style>
 </head>
 
 <body>
 
-
-	
-	<div class='content lemongrid'><div style='background:#afa;'>
-
-		<section class='clear'>
-			<section class='section--1_4'>
-				<div style='background:red'>1_4</div>
-			</section>
-
-			<section class='section--1_4'>
-				<div style='background:red'>1_4</div>
-			</section>
-			<section class='section--1_4'>
-				<div style='background:red'>1_4</div>
-			</section>
-
-			<section class='section--1_4'>
-				<div style='background:red'>1_4</div>
-			</section>
-		</section>
-
-		<section class='clear'>
-			<section class='section--1'>
-				<div style='background:red'>1</div>
-			</section>
-			<section class='section--1'>
-				<div style='background:red'>1</div>
-			</section>
-			<section class='section--1'>
-				<div style='background:red'>1</div>
-			</section>
-			<section class='section--1'>
-				<div style='background:red'>1</div>
-			</section>
-		</section>
-	</div></div>
-
-	
-
-	<div class='content lemongrid lemongrid--fluid'><div style='background:#afa;'>
-		<div style='clear:both'>
-			<section class='section--1_4'>
-				<div style='background:red'>1_4</div>
-			</section>
-
-			<section class='section--1_4'>
-				<div style='background:red'>1_4</div>
-			</section>
-			<section class='section--1_4'>
-				<div style='background:red'>1_4</div>
-			</section>
-
-			<section class='section--1_4'>
-				<div style='background:red'>1_4</div>
+	<div class='header'>
+		<div class='lemongrid lemongrid--fluid main'>
+			<section class='section--1_1'>
+				Typical Header
 			</section>
 		</div>
-		<div style='clear:both'>
-			<section class='section--1_2'>
-				<div style='background:red'>1_2</div>
-			</section>
-
-			<section class='section--1_2'>
-				<div style='background:red'>1_2</div>
-			</section>
-		</div>
-
-	</div></div>
-
-
-	<div class='content'><div>
-		normal content
-	</div></div>
-
-
-
-
-	<div>&nbsp;</div>
-
-	<div style='width: 70%; margin: 0 auto;background: #afa'>
-
-		<div style='background: #eee;'>
-			<section class='section--1_3'><div style='background:red'>Yes</div></section>
-			<section class='section--1_3'><div style='background:red'>Yes</div></section>
-			<section class='section--1_3'><div style='background:red'>Yes</div></section>
-		</div>
-
-
-		<div>&nbsp;</div>
-
-		<div style='background: #eee; overflow: visible;'>
-			<div style='width: 33.3%;float:left;background: #ccf'>
-				<div style='padding: 0 20px 0 0;'>
-					<div style='background: #aaf'><br />33<br /></div>
-				</div>
-			</div>
-			<div style='width: 33.3%;float:left;background: #ccf'>
-				<div style='padding: 0 10px;'>
-					<div style='background: #aaf'><br />33<br /></div>
-				</div>
-			</div>
-			<div style='width: 33.3%;float:left;background: #ccf'>
-				<div style='padding: 0 0 0 20px'>
-					<div style='background: #aaf'><br />33<br /></div>
-				</div>
-			</div>
-		</div>
-
-		<div>&nbsp;</div>
-
-		<div style='background: #eee; overflow: visible;'>
-			General
-		</div>
-
-		<div>&nbsp;</div>
-
-		<div style='width: 100%;padding: 0 40px; margin: 0 0 0 -40px;background: #eee; overflow: visible;'>
-			This would need to stretch out beyond the padding..
-			<div>&nbsp;</div>
-
-			<div style='width: 33.3%;float:left;background: #ccf'>
-				<div style='padding: 0 20px;'>
-					<div style='background: #aaf'><br />33<br /></div>
-				</div>
-			</div>
-
-			<div style='width: 33.3%;float:left;background: #ccf'>
-				<div style='padding: 0 20px;'>
-					<div style='background: #aaf'><br />33<br /></div>
-				</div>
-			</div>
-
-			<div style='width: 33.3%;float:left;background: #ccf'>
-				<div style='padding: 0 20px;'>
-					<div style='background: #aaf'><br />33<br /></div>
-				</div>
-			</div>
-
-			<div>&nbsp;</div>
-
-			<div style='width: 50%;float:left;background: #ccf'>
-				<div style='padding: 0 20px;'>
-					<div style='background: #aaf'><br />50<br /></div>
-				</div>
-			</div>
-
-			<div style='width: 50%;float:left;background: #ccf'>
-				<div style='padding: 0 20px;'>
-					<div style='background: #aaf'><br />50<br /></div>
-				</div>
-			</div>
-
-			<div>&nbsp;</div>
-
-			<div style='width: 25%;float:left;background: #ccf'>
-				<div style='padding: 0 20px;'>
-					<div style='background: #aaf'><br />25<br /></div>
-				</div>
-			</div>
-			<div style='width: 25%;float:left;background: #ccf'>
-				<div style='padding: 0 20px;'>
-					<div style='background: #aaf'><br />25<br /></div>
-				</div>
-			</div>
-			<div style='width: 25%;float:left;background: #ccf'>
-				<div style='padding: 0 20px;'>
-					<div style='background: #aaf'><br />25<br /></div>
-				</div>
-			</div>
-			<div style='width: 25%;float:left;background: #ccf'>
-				<div style='padding: 0 20px;'>
-					<div style='background: #aaf'><br />25<br /></div>
-				</div>
-			</div>
-
-			<div>&nbsp;</div>
-
-			<div style='clear: both;width:100%;height:1px;'>&nbsp;</div>
-		</div>
-
-		<div>&nbsp;</div>
 	</div>
 
-<!--
-<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-<script type='text/javascript'>
-	if (/msie [1-8]{1}[^0-9]/.test(navigator.userAgent.toLowerCase())) {
-    	$('section:last-child').addClass('last-child');
-    }
-</script>
--->
+	<div class='content'>
+		<div class='lemongrid lemongrid--fluid main'>
+
+			<section>
+				<section class='section--1_1'>Remove 'lemongrid--fluid' classes for a fixed-width layout.</section>
+			</section>
+			
+			<section>&nbsp;</section>
+
+			<section class='gutterless'><div class='testdiv'>gutterless</div></section>
+
+			<section>&nbsp;</section>
+
+			<section>
+				<section class='section--1_1'><div class='testdiv'>1_1</div></section>
+			</section>
+
+			<section>&nbsp;</section>
+
+			<section>
+				<section class='section--1_3'><div class='testdiv'>1_3</div></section>
+				<section class='section--1_6'><div class='testdiv'>1_6</div></section>
+				<section class='section--1_6'><div class='testdiv'>1_6</div></section>
+				<section class='section--1_3'><div class='testdiv'>1_3</div></section>
+			</section>
+
+			<section>&nbsp;</section>
+
+			<section>
+				<section class='section--1_2'>&nbsp;</section>
+				<section class='section--1_2'><div class='testdiv'>1_2</div></section>
+			</section>
+
+			<section>&nbsp;</section>
+
+			<section>
+				<section class='section--1_3'><div class='testdiv'>1_3</div></section>
+				<section class='section--1_3'>
+					<section class='section--1_3 gutterless--left'><div class='testdiv'>nested</div></section>
+					<section class='section--1_3'><div class='testdiv'>nested</div></section>
+					<section class='section--1_3 gutterless--right'><div class='testdiv'>nested</div></section>
+				</section>
+				<section class='section--1_3'><div class='testdiv'>1_3</div></section>
+			</section>
+
+			<section>&nbsp;</section>
+
+			<section class='testsection'>
+				<section class='section--1_2 double-gutters'>
+					<div class='testdiv'>double-gutters (also double-gutters--left double-gutters--right)</div>
+				</section>
+			</section>
+
+			<section class='testsection'>
+				<section class='section--1_2'><div class='testdiv'>(default 1_2 section)</div></section>
+			</section>
+			
+			<section class='testsection'>
+				<section class='section--1_2 gutterless'>
+					<div class='testdiv'>gutterless (also gutterless--left gutterless--right)</div>
+				</section>
+			</section>
+		</div>
+	</div>
+
 
 </body>
 </html>

@@ -11,7 +11,7 @@ echo.
 echo   CSS file will now be created automatically from SCSS.
 echo   (until you close this window)
 echo.
-sass --watch --style compressed lemonGridCompilation.scss:../lemongrid.css
+sass --watch --style compressed lemonGridInit.scss:../css/lemongrid.css
 
 echo.
 if %errorlevel% neq 0 (

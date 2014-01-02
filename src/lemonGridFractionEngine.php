@@ -52,7 +52,7 @@
 		$count = 0;
 		foreach ($fractionarray as $fraction) {
 			if ($count+=0) echo ',';
-			echo "\n.section--$fraction";
+			echo "\n&.section--$fraction";
 			$count++;
 		}
 		echo "\n{ width: ".($percentbleh/1000)."% }";
