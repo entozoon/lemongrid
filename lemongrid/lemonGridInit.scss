@@ -1,33 +1,30 @@
 @import 'lemonGrid';
-//@import 'lemonGridDebug';
 
 
 // Generally sections will have fractional widths for fluid sites, 
-// so the number of columns isn't too important.
-$columns: 12;
-$gutter-width: 10;
-$segment-width: 68;
-$outer-gutters: 3;
+// so the number of sections isn't too important.
+$sections: 12;
+$section-width: 80;
+$gutter-width: 20;
+$extra-outer-gutters: 0; // optional extra outer gutters lengths
 
 
 .lemongrid {
-	@include LemonGridGen($columns, $segment-width, $gutter-width, $outer-gutters);
-	width: lemonGridWidth($columns, $segment-width, $gutter-width, $outer-gutters) + px;
+	@include LemonGridGen($sections, $section-width, $gutter-width, $extra-outer-gutters);
+	width: lemonGridWidth($sections, $section-width, $gutter-width, $extra-outer-gutters) + px;
 
 	&.main {
 		position: relative;
 		overflow: hidden;
 		margin: 0 auto;
 		padding: 0;
-		//width: contentWidth($columns, $segment-width, $gutter-width) + px;
 	}
-
 
 	&.lemongrid--fluid {
 		width: 100%;
 		// Typical maximum width options:
-		//max-width: lemonGridWidth($columns, $segment-width, $gutter-width) + px;
-		max-width: 1024px - $gutter-width * 2;
+		max-width: lemonGridWidth($sections, $section-width, $gutter-width, $extra-outer-gutters) + px;
+		//max-width: 1024px - $gutter-width * ($extra-outer-gutters - 1);
 
 		// nested fluid lemongrids have no padding atall
 		.lemongrid--fluid section {
@@ -45,10 +42,13 @@ html, body, #wrapper {
 	padding: 0;
 	width: 100%;
 	height: auto;
-	// Typical minimum width options:
-	//min-width: 1024px - $gutter-width * 2;
-	//min-width: lemonGridWidth($columns, $segment-width, $gutter-width, $outer-gutters) + px;
-	min-width: 800px;
+
+	// Fluid
+	min-width: 1024px - $gutter-width * 2 - $extra-outer-gutters * $gutter-width * 2;
+
+	// Fixed width
+	//min-width: lemonGridWidth($sections, $section-width, $gutter-width, $extra-outer-gutters) + px;
+
 	min-height: 100%;
 }
 html {
