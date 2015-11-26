@@ -43,7 +43,7 @@ LEMONGRID
 ║▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓║
 █████████████████████████████████████████████████████████████████████████████████
 █ .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   . █
-█   LEMONGRID v9.5 - created by Michael Cook - mykeself.com    .   .   .   .   .█
+█   LEMONGRID v9.5 - created by Michael Cook - m.ichael.co.uk  .   .   .   .   .█
 █   .   .   .   (probably not backward compatible!) .   .   .   .   .   .   .   █
 █.  @license:http://opensource.org/licenses/MIT  .   .   .   .   .   .   .   .  █
 ▓ .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   . ▓
@@ -55,7 +55,7 @@ LEMONGRID
 
 
 ## PLEASE NOTE BEFORE USING:
-### This project is being scrapped. It works fine and everything, but doesn't offer advanced adaptivity support for fluid sites, so I'm essentially switching over to the bootstrap grid and mixing in lemongrid features (gutterless etc.)
+### This project is being scrapped. It works fine and everything, but doesn't offer advanced adaptivity support for fluid sites, so I'm essentially switching over to the bootstrap grid and mixing in lemongrid features (gutterless etc.) - which is now know as "Lemonlace" - https://github.com/entozoon/lemonlaces
 
 
 #### Sass Initialisation example:
